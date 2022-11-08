@@ -19,7 +19,7 @@ const Footer = () => {
       </p>
 
       <div className="text-center p-4">
-        &copy; {new Date().getFullYear()} —
+        &copy; {new Date().getFullYear()} —{" "}
         <Link className="text-white" to="/">
           Math Mentor
         </Link>
