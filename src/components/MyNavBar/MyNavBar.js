@@ -6,7 +6,7 @@ import {
   IconButton,
   Button,
 } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaBars, FaCompress } from "react-icons/fa";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { SpinnerRoundFilled } from "spinners-react";
@@ -18,8 +18,18 @@ import LogOutButton from "../LogOutButton/LogOutButton";
 
 export default function MyNavBar() {
   const [openNav, setOpenNav] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
   const { firebaseAuth } = useContext(FirebaseAuthContext);
-  const [user, loading, error] = useAuthState(firebaseAuth);
+  const [user, loading, error] = useAuthState(firebaseAuth, {
+    onUserChanged: (user) => {
+      if (!user) {
+        localStorage.removeItem("jwt");
+        return;
+      }
+      console.log(user);
+    },
+  });
 
   useEffect(() => {
     window.addEventListener(
@@ -28,14 +38,21 @@ export default function MyNavBar() {
     );
   }, []);
 
-  const loginButton = <Button>Log In</Button>;
+  const loginButtonOnClick = () => {
+    navigate("/login", { state: { from: location } });
+  };
+  const loginButton = (
+    <Button size="sm" onClick={loginButtonOnClick}>
+      Log In
+    </Button>
+  );
 
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
       <MyNavItem to="/">Home</MyNavItem>
       <MyNavItem to="/services">Services</MyNavItem>
       <MyNavItem to="/blog">Blog</MyNavItem>
-      {loading && <SpinnerRoundFilled />}
+      {loading && <SpinnerRoundFilled size="30" />}
       {!loading && error && <span>Reload the Page</span>}
       {!loading && !error && user && (
         <>
