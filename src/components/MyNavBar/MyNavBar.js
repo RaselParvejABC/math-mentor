@@ -86,7 +86,7 @@ export default function MyNavBar() {
         >
           <Link to="/" className="flex items-center align-middle">
             <img src={Logo} alt="Logo" className="max-w-[4%] inline mr-3" />
-            <Typography as="span" variant="h2" className="text-2xl">
+            <Typography as="span" variant="h2" className="text-xl">
               Math Mentor
             </Typography>
           </Link>

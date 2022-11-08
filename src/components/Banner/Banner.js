@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const Banner = () => {
   return (
     <div
-      className="p-12 text-center relative overflow-hidden bg-no-repeat bg-cover rounded-lg rounded-t-none"
+      className="p-12 text-center relative overflow-hidden bg-no-repeat bg-cover"
       style={{
         backgroundImage:
           "url('https://i.ibb.co/283rT7X/joanna-kosinska-1-CMo-Fs-Pfso-unsplash.jpg')",
-        height: "400px",
+        height: "500px",
       }}
     >
       <div

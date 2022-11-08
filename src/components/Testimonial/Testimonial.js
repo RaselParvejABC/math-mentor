@@ -6,7 +6,7 @@ const Testimonial = () => {
       <div className="text-center max-w-3xl mx-auto">
         <h3 className="text-3xl font-bold mb-6 text-gray-800">Testimonials</h3>
         <p className="mb-6 pb-2 md:mb-12">
-          Let's hear from two of my special Clients!
+          Let's hear from two of my special Apprentices!
         </p>
       </div>
 
@@ -44,7 +44,7 @@ const Testimonial = () => {
           <p className="text-xl my-4 text-gray-500">
             When the Riddler challenged me to solve a Math Riddle to save
             Gotham, the Joker and the Penguin laughed at me, meaning Math is not
-            a thing for Batman.
+            some mice for Batman to play with.
             <br />
             <br />
             I couldn't prove them wrong on the spot. (A bad day for Justice!)
