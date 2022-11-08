@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className="text-white bg-blue-gray-800 p-6 text-center">
-      <p className="text-center">
+      <p className="text-center mt-4">
         Join for Free.
         <button
           type="button"

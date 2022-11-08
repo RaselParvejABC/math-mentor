@@ -11,7 +11,7 @@ const Testimonial = () => {
       </div>
 
       <div className="px-6 grid md:grid-cols-2 gap-12 text-center">
-        <div className="mb-6 md:mb-0">
+        <div className="mb-6 md:mb-0 px-8">
           <div className="flex justify-center mb-6">
             <img
               src="https://i.ibb.co/QCSRz8F/sherlock.jpg"
@@ -33,7 +33,7 @@ const Testimonial = () => {
           </p>
           <p className="italic">- Sherlock Holmes</p>
         </div>
-        <div className="mb-0">
+        <div className="mb-0 px-8">
           <div className="flex justify-center mb-6">
             <img
               src="https://i.ibb.co/sVWsnr6/batman.jpg"
@@ -48,8 +48,8 @@ const Testimonial = () => {
             <br />
             <br />
             I couldn't prove them wrong on the spot. (A bad day for Justice!)
-            But eventually I did prove them wrong with the help of Muhammad Rasel Parvej, our
-            dear Math Mentor.
+            But eventually I did prove them wrong with the help of Muhammad
+            Rasel Parvej, our dear Math Mentor.
             <br />
             <br />
             Justice was served!

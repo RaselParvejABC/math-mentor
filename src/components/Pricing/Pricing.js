@@ -47,7 +47,7 @@ export default function Pricing() {
                   </p>
                 </div>
                 <p className="md:w-80 text-base leading-6 mt-4 text-gray-600">
-                  Not more than 10 apprentices in a batch.
+                  Not more than 10 apprentices in a group.
                 </p>
               </div>
             </div>
@@ -64,7 +64,7 @@ export default function Pricing() {
                 </p>
               </div>
               <p className="md:w-80 text-base leading-6 mt-4 text-gray-600">
-                More than 10 apprentices in a group.
+                More than 10 apprentices in a batch.
               </p>
             </div>
           </div>
