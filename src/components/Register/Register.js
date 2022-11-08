@@ -33,7 +33,11 @@ const Register = () => {
   const from = location.state?.from?.pathname || "/";
 
   if (currentUserLoading) {
-    return null;
+    return (
+      <div className="flex flex-row justify-center mt-6">
+        <SpinnerDotted size="100" />
+      </div>
+    );
   }
 
   if (currentUserLoadingError) {
@@ -47,29 +51,34 @@ const Register = () => {
     return null;
   }
 
-  const handleSubmission = (event) => {
+  const handleSubmission = async (event) => {
     event.preventDefault();
     setError(null);
     if (password !== passwordConfirmed) {
       setError("Passwords don't Match");
       return;
     }
-    if (name.trim().length === 0) {
+    if (name?.trim().length === 0) {
       setError("Names cannot be empty!");
-      return;
-    }
-    if (photoURL.trim().length === 0) {
-      setError("PhotoURL cannot be empty!");
       return;
     }
     if (!EmailValidator.validate(email)) {
       setError("Email Format Incorrect!");
       return;
     }
-    if (password.length < 6) {
+    if (password?.length < 6) {
       setError("Password needs to be at least 6 Characters!");
       return;
     }
+
+    const formData = new FormData();
+    formData.append("key", process.env.REACT_APP_ImgBB_API_KEY);
+    formData.append("image", event.target.propic.files[0]);
+
+    await fetch("https://api.imgbb.com/1/upload", {
+      method: "POST",
+      body: formData,
+    });
     createUserWithEmailAndPassword(email, password)
       .then((user) => {
         setProfileNeedsUpdate(true);
@@ -87,7 +96,7 @@ const Register = () => {
           <h3 className="text-4xl font-bold text-blue-500">Math Mentor</h3>
         </div>
         <div className="w-full px-6 py-4 mt-6 overflow-hidden bg-white shadow-md sm:max-w-lg sm:rounded-lg">
-          <form>
+          <form onSubmit={handleSubmission}>
             <div>
               <label
                 htmlFor="name"
@@ -107,21 +116,21 @@ const Register = () => {
             </div>
             <div className="mt-4">
               <label
-                htmlFor="pic"
+                htmlFor="propic"
                 className="block text-sm font-medium text-gray-700 undefined"
               >
-                Profile Pic URL
+                Profile Picture
               </label>
               <div className="flex flex-col items-start">
                 <input
-                  onChange={(event) => setPhotoURL(event.target.value)}
-                  value={photoURL}
-                  type="text"
-                  name="pic"
-                  className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                  required
+                  type="file"
+                  name="propic"
+                  className="pl-2 block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                 />
               </div>
             </div>
+
             <div className="mt-4">
               <label
                 htmlFor="email"
@@ -176,7 +185,7 @@ const Register = () => {
 
             <div className="flex items-center mt-4">
               <button
-                onClick={handleSubmission}
+                type="submit"
                 className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-600"
                 disabled={updateLoading || loading}
               >
@@ -185,7 +194,7 @@ const Register = () => {
             </div>
           </form>
 
-          {(error || firebaseError) && (
+          {(error || firebaseError || updateError) && (
             <div className="mt-4 text-center text-red-500">
               {error || firebaseError.message}
             </div>
