@@ -18,7 +18,7 @@ const Banner = () => {
         <div className="flex justify-center items-center h-full">
           <div className="text-white">
             <h2 className="font-semibold text-4xl mb-4">
-              Mathematics can be scary, So is Love!
+              Mathematics can be scary, so is Love!
             </h2>
             <h4 className="text-lg mb-6">
               Let's find that Love
