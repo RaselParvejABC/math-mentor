@@ -20,7 +20,7 @@ const Testimonial = () => {
             />
           </div>
           <p className="text-xl my-4 text-gray-500">
-            To defeat my greatest nemesis Professor James Moriarty, I had to
+            To defeat my greatest nemesis, Professor James Moriarty, I had to
             decode one of his Notebooks, the content of which was kind of
             mathematically encrypted.
             <br />
@@ -42,13 +42,14 @@ const Testimonial = () => {
             />
           </div>
           <p className="text-xl my-4 text-gray-500">
-            When the Riddler challenged to solve a Math Riddle to save Gotham,
-            the Joker and the Penguin laughed at me, meaning Math is not a thing
-            for Batman.
+            When the Riddler challenged me to solve a Math Riddle to save
+            Gotham, the Joker and the Penguin laughed at me, meaning Math is not
+            a thing for Batman.
             <br />
             <br />
-            I couldn't prove them wrong on the spot. But eventually I did with
-            the help of Muhammad Rasel Parvej, our dear Math Mentor.
+            I couldn't prove them wrong on the spot. (A bad day for Justice!)
+            But eventually I did prove them wrong with the help of Muhammad Rasel Parvej, our
+            dear Math Mentor.
             <br />
             <br />
             Justice was served!
