@@ -1,18 +1,25 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {
   Navbar,
   MobileNav,
   Typography,
   IconButton,
+  Button,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import { FaBars, FaCompress } from "react-icons/fa";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { SpinnerRoundFilled } from "spinners-react";
 
 import Logo from "./logo.png";
-import MyNavLink from "./MyNavLink";
+import MyNavItem from "./MyNavItem";
+import { FirebaseAuthContext } from "../../contexts/FirebaseAuthContextProvider/FirebaseAuthContextProvider";
+import LogOutButton from "../LogOutButton/LogOutButton";
 
 export default function MyNavBar() {
   const [openNav, setOpenNav] = useState(false);
+  const { firebaseAuth } = useContext(FirebaseAuthContext);
+  const [user, loading, error] = useAuthState(firebaseAuth);
 
   useEffect(() => {
     window.addEventListener(
@@ -21,32 +28,23 @@ export default function MyNavBar() {
     );
   }, []);
 
+  const loginButton = <Button>Log In</Button>;
+
   const navList = (
     <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Typography
-        as="li"
-        variant="paragraph"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <MyNavLink to="/">Home</MyNavLink>
-      </Typography>
-      <Typography
-        as="li"
-        variant="paragraph"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <MyNavLink to="/services">Services</MyNavLink>
-      </Typography>
-      <Typography
-        as="li"
-        variant="paragraph"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <MyNavLink to="/blog">Blog</MyNavLink>
-      </Typography>
+      <MyNavItem to="/">Home</MyNavItem>
+      <MyNavItem to="/services">Services</MyNavItem>
+      <MyNavItem to="/blog">Blog</MyNavItem>
+      {loading && <SpinnerRoundFilled />}
+      {!loading && error && <span>Reload the Page</span>}
+      {!loading && !error && user && (
+        <>
+          <MyNavItem to="/services/add">Add a Service</MyNavItem>
+          <MyNavItem to="/my-reviews">My Reviews</MyNavItem>
+          <LogOutButton />
+        </>
+      )}
+      {!loading && !error && !user && loginButton}
     </ul>
   );
 
@@ -69,7 +67,6 @@ export default function MyNavBar() {
           </Link>
         </Typography>
         <div className="hidden lg:block">{navList}</div>
-
         <IconButton
           variant="text"
           className="ml-auto h-6 w-6 text-inherit hover:bg-transparent focus:bg-transparent active:bg-transparent lg:hidden"

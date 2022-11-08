@@ -4329,6 +4329,7 @@ __metadata:
     react-icons: ^4.6.0
     react-router-dom: ^6.4.3
     react-scripts: 5.0.1
+    spinners-react: ^1.0.7
     tailwindcss: ^3.2.2
   languageName: unknown
   linkType: soft
@@ -12026,6 +12027,18 @@ __metadata:
     select-hose: ^2.0.0
     spdy-transport: ^3.0.0
   checksum: 2c739d0ff6f56ad36d2d754d0261d5ec358457bea7cbf77b1b05b0c6464f2ce65b85f196305f50b7bd9120723eb94bae9933466f28e67e5cd8cde4e27f1d75f8
+  languageName: node
+  linkType: hard
+
+"spinners-react@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "spinners-react@npm:1.0.7"
+  peerDependencies:
+    "@types/react": ^16.x || ^17.x || ^18.x
+    "@types/react-dom": ^16.x || ^17.x || ^18.x
+    react: ^16.x || ^17.x || ^18.x
+    react-dom: ^16.x || ^17.x || ^18.x
+  checksum: a06c67b89118721fd5042ef8927e193924de18701ee65724fc3bf158733a332ad1a06179e650c87ab16ea9af09a92a425131d1b53f0a8bc059588a7231fb3d31
   languageName: node
   linkType: hard
 
