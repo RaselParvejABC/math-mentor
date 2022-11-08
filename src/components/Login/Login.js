@@ -126,8 +126,8 @@ const Login = () => {
             <div className="mt-4 text-center text-red-500">
               {[
                 error,
-                passwordLoginError.message,
-                googleLoginError.message,
+                passwordLoginError?.message,
+                googleLoginError?.message,
               ].join("\n")}
             </div>
           )}

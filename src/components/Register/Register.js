@@ -12,11 +12,11 @@ import { FirebaseAuthContext } from "../../contexts/FirebaseAuthContextProvider/
 const Register = () => {
   const { firebaseAuth } = useContext(FirebaseAuthContext);
   const [name, setName] = useState("");
-  const [photoURL, setPhotoURL] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmed, setPasswordConfirmed] = useState("");
   const [error, setError] = useState(null);
+  const [uploadingImage, setUploadingImage] = useState(false);
   const [profileNeedsUpdate, setProfileNeedsUpdate] = useState(false);
   const [profileUpdated, setProfileUpdated] = useState(false);
 
@@ -75,13 +75,29 @@ const Register = () => {
     formData.append("key", process.env.REACT_APP_ImgBB_API_KEY);
     formData.append("image", event.target.propic.files[0]);
 
-    await fetch("https://api.imgbb.com/1/upload", {
-      method: "POST",
-      body: formData,
-    });
+    setUploadingImage(true);
+    let photoURL = null;
+    try {
+      const imgBBResponse = await fetch("https://api.imgbb.com/1/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const imgBBResponseBody = await imgBBResponse.json();
+      photoURL = imgBBResponseBody["data"]["display_url"];
+    } catch (err) {
+      console.error(err);
+      setError("Unable to Upload the Picture!");
+      return;
+    } finally {
+      setUploadingImage(false);
+    }
+
+    setProfileNeedsUpdate(true);
+
+    console.log(photoURL);
+
     createUserWithEmailAndPassword(email, password)
       .then((user) => {
-        setProfileNeedsUpdate(true);
         updateProfile({ photoURL, displayName: name }).then(() => {
           setProfileUpdated(true);
         });
@@ -124,6 +140,7 @@ const Register = () => {
               <div className="flex flex-col items-start">
                 <input
                   required
+                  accept="image/png, image/jpeg"
                   type="file"
                   name="propic"
                   className="pl-2 block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
@@ -187,7 +204,7 @@ const Register = () => {
               <button
                 type="submit"
                 className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-700 rounded-md hover:bg-blue-500 focus:outline-none focus:bg-blue-600"
-                disabled={updateLoading || loading}
+                disabled={updateLoading || loading || uploadingImage}
               >
                 Register
               </button>
@@ -196,11 +213,11 @@ const Register = () => {
 
           {(error || firebaseError || updateError) && (
             <div className="mt-4 text-center text-red-500">
-              {error || firebaseError.message}
+              {error || firebaseError?.message || updateError?.message}
             </div>
           )}
 
-          {loading && (
+          {(loading || uploadingImage) && (
             <div className="flex flex-row justify-center mt-6">
               <SpinnerDotted size="100" />
             </div>

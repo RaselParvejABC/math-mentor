@@ -5,6 +5,8 @@ import {
   Typography,
   IconButton,
   Button,
+  Tooltip,
+  Avatar,
 } from "@material-tailwind/react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaBars, FaCompress } from "react-icons/fa";
@@ -48,7 +50,7 @@ export default function MyNavBar() {
   );
 
   const navList = (
-    <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
+    <ul className="mb-4 mt-2 flex flex-col gap-1 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-3">
       <MyNavItem to="/">Home</MyNavItem>
       <MyNavItem to="/services">Services</MyNavItem>
       <MyNavItem to="/blog">Blog</MyNavItem>
@@ -58,6 +60,12 @@ export default function MyNavBar() {
         <>
           <MyNavItem to="/services/add">Add a Service</MyNavItem>
           <MyNavItem to="/my-reviews">My Reviews</MyNavItem>
+          <Tooltip
+            content={user.displayName}
+            className="bg-blue-900 text-white"
+          >
+            <Avatar size="xs" src={user.photoURL}></Avatar>
+          </Tooltip>
           <LogOutButton />
         </>
       )}
