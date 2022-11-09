@@ -219,7 +219,7 @@ const Register = () => {
 
           {(loading || uploadingImage) && (
             <div className="flex flex-row justify-center mt-6">
-              <SpinnerDotted size="100" />
+              <SpinnerDotted size="70" />
             </div>
           )}
 

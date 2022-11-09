@@ -134,7 +134,7 @@ const Login = () => {
 
           {(passwordLoginLoading || googleLoginLoading) && (
             <div className="flex flex-row justify-center mt-6">
-              <SpinnerDotted size="100" />
+              <SpinnerDotted size="70" />
             </div>
           )}
           <div className="mt-4 text-grey-600">
