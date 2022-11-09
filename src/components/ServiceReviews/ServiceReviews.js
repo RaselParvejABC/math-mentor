@@ -15,7 +15,7 @@ const ServiceReviews = () => {
   return (
     <section className="mt-12 flex flex-col gap-20">
       <Typography variant="h4" color="blue">
-        Reviews on this Service
+        {reviews.length || "No"} Reviews on this Service
       </Typography>
       {reviews.map((review) => {
         return (
