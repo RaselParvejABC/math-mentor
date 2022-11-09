@@ -14,6 +14,7 @@ import StarRatingComponent from "react-star-rating-component";
 const ServiceCard = ({
   service: { _id, title, image, price, description },
   getDescriptionComponent,
+  bigCard,
 }) => {
   const [averageRating, setAverageRating] = useState(null);
 
@@ -35,7 +36,7 @@ const ServiceCard = ({
   }, [_id]);
 
   return (
-    <Card className="w-96">
+    <Card className={!bigCard ? "w-96" : null}>
       <CardHeader color="white" className="relative h-56">
         <PhotoProvider
           speed={() => 800}
@@ -53,21 +54,31 @@ const ServiceCard = ({
         </PhotoProvider>
         <img src={image} alt="Service" className="h-full w-full" />
       </CardHeader>
-      <CardBody className="text-center h-60">
-        <Typography variant="h5" className="mb-2">
-          {title}
-        </Typography>
+      <CardBody className={`text-center h-min`}>
+        {!bigCard && (
+          <Typography variant="h5" className="mb-2">
+            {title}
+          </Typography>
+        )}
         {getDescriptionComponent && getDescriptionComponent(description)}
         {!getDescriptionComponent && <Typography>{description}</Typography>}
       </CardBody>
-      <CardFooter divider className="flex flex-col justify-between py-3">
+      <CardFooter divider className="flex flex-col justify-between py-3 h-fit">
         <div className="flex flex-row justify-between items-center">
-          <Typography variant="small">{price}</Typography>
-          <Button size="sm">
-            <Link to={`service/${_id}`}>View Details</Link>
-          </Button>
+          <Typography
+            className={`${
+              bigCard ? "justify-self-center" : null
+            } text-xl font-bold`}
+          >
+            {price}
+          </Typography>
+          {!bigCard && (
+            <Button size="sm">
+              <Link to={`/service/${_id}`}>View Details</Link>
+            </Button>
+          )}
         </div>
-        <div className="mt-4">
+        <div className="mt-4 text-left">
           {!averageRating && <Typography>Not Rated Yet</Typography>}
           {averageRating && (
             <StarRatingComponent
