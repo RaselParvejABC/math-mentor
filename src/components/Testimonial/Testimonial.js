@@ -43,11 +43,13 @@ const Testimonial = () => {
           </div>
           <p className="text-xl my-4 text-gray-500">
             When the Riddler challenged me to solve a Math Riddle to save
-            Gotham, the Joker and the Penguin laughed at me, meaning Math is not
-            some mice for Batman to play with.
+            Gotham, the Joker and the Penguin laughed at me, saying "Math is not
+            some mice for Batsy to catch".
             <br />
             <br />
             I couldn't prove them wrong on the spot. (A bad day for Justice!)
+            <br />
+            <br />
             But eventually I did prove them wrong with the help of Muhammad
             Rasel Parvej, our dear Math Mentor.
             <br />
