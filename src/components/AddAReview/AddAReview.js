@@ -11,7 +11,7 @@ const AddAReview = () => {
 
   if (currentUserLoadingError) {
     return (
-      <Typography variant="h2">
+      <Typography color="red" variant="h2">
         Please, Reload the Page to Add a Review!
       </Typography>
     );
@@ -26,7 +26,9 @@ const AddAReview = () => {
 
   if (!currentUser) {
     return (
-      <Typography variant="h2">Please, Log In to Add a Review!</Typography>
+      <Typography color="blue" variant="h2">
+        Please, Log In to Add a Review!
+      </Typography>
     );
   }
   return <div>Now You can add a Review</div>;
