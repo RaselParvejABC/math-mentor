@@ -64,7 +64,7 @@ const ServiceCard = ({
         <div className="flex flex-row justify-between items-center">
           <Typography variant="small">{price}</Typography>
           <Button size="sm">
-            <Link to={`services/${_id}`}>View Details</Link>
+            <Link to={`service/${_id}`}>View Details</Link>
           </Button>
         </div>
         <div className="mt-4">
