@@ -4,7 +4,9 @@ import App from "./App";
 import ErrorPage from "./ErrorPage";
 import Home from "./components/Home/Home";
 import Blog from "./components/Blog/Blog";
-import Services from "./components/Services/Services";
+import Services, {
+  loader as serviceCountLoader,
+} from "./components/Services/Services";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 
@@ -20,6 +22,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/services",
+        loader: serviceCountLoader,
         element: <Services />,
       },
       {

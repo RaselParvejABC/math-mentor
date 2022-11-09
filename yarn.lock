@@ -4322,6 +4322,7 @@ __metadata:
     eslint: ^8.27.0
     eslint-config-react-app: ^7.0.1
     firebase: ^9.13.0
+    paginact: ^1.0.3
     postcss: ^8.4.18
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -9712,6 +9713,15 @@ __metadata:
   version: 2.2.0
   resolution: "p-try@npm:2.2.0"
   checksum: f8a8e9a7693659383f06aec604ad5ead237c7a261c18048a6e1b5b85a5f8a067e469aa24f5bc009b991ea3b058a87f5065ef4176793a200d4917349881216cae
+  languageName: node
+  linkType: hard
+
+"paginact@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "paginact@npm:1.0.3"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 87c13b0e3e2f240332230093cd8a6e9fbbeaa031f7e9a53d1a82067b357b728e7018f8bd032c4b5826d38cb5cf21db96939852e4b323d8dcf112ae5c97539502
   languageName: node
   linkType: hard
 

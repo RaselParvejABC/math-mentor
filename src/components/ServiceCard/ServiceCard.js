@@ -9,7 +9,6 @@ import {
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 import StarRatingComponent from "react-star-rating-component";
-import { FaStar } from "react-icons/fa";
 
 const ServiceCard = ({
   service: { _id, title, image, price, description },
