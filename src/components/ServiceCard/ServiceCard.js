@@ -36,8 +36,8 @@ const ServiceCard = ({
   }, [_id]);
 
   return (
-    <Card className={!bigCard ? "w-96" : null}>
-      <CardHeader color="white" className="relative h-56">
+    <Card>
+      <CardHeader color="white" className="relative h-28 md:h-56">
         <PhotoProvider
           speed={() => 800}
           easing={(type) =>
@@ -46,13 +46,14 @@ const ServiceCard = ({
               : "cubic-bezier(0.34, 1.56, 0.64, 1)"
           }
         >
-          <div className="foo">
-            <PhotoView src={image}>
-              <img src={image} alt="Service" className="h-full w-full" />
-            </PhotoView>
-          </div>
+          <PhotoView src={image}>
+            <img
+              src={image}
+              alt="Service"
+              className="object-cover object-center"
+            />
+          </PhotoView>
         </PhotoProvider>
-        <img src={image} alt="Service" className="h-full w-full" />
       </CardHeader>
       <CardBody className={`text-center h-min`}>
         {!bigCard && (
@@ -64,7 +65,7 @@ const ServiceCard = ({
         {!getDescriptionComponent && <Typography>{description}</Typography>}
       </CardBody>
       <CardFooter divider className="flex flex-col justify-between py-3 h-fit">
-        <div className="flex flex-row justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center">
           <Typography
             className={`${
               bigCard ? "justify-self-center" : null
@@ -82,7 +83,7 @@ const ServiceCard = ({
           {!averageRating && <Typography>Not Rated Yet</Typography>}
           {averageRating && (
             <StarRatingComponent
-              className="text-left text-2xl"
+              className="text-center md:text-left text-2xl"
               name="rating"
               value={averageRating}
               editing={false}

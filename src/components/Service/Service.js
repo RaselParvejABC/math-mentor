@@ -38,7 +38,7 @@ const Service = () => {
   return (
     <section className="container mx-auto text-center my-8">
       <h1 className="text-3xl font-bold">{service.title}</h1>
-      <section className="grid lg:grid-cols-2 my-10">
+      <section className="grid lg:grid-cols-2 gap-10 my-10">
         <ServiceCard service={service} bigCard />
         <ServiceReviewSection />
       </section>

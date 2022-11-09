@@ -8,6 +8,7 @@ import Services, {
   loader as serviceCountLoader,
 } from "./components/Services/Services";
 import Service, { loader as serviceLoader } from "./components/Service/Service";
+import { reviewAddAction } from "./action-routes/review-add";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
         path: "/service/:id",
         loader: serviceLoader,
         element: <Service />,
+      },
+      {
+        path: "/review/add",
+        action: reviewAddAction,
       },
       {
         path: "/blog",
