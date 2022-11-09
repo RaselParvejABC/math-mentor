@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { SpinnerDotted } from "spinners-react";
-import { Typography } from "@material-tailwind/react";
+import { Button, Typography } from "@material-tailwind/react";
 import ServiceCard from "../ServiceCard/ServiceCard";
 
 const ServicesOnHome = () => {
@@ -62,6 +63,11 @@ const ServicesOnHome = () => {
             getDescriptionComponent={getDescriptionComponent}
           />
         ))}
+      </div>
+      <div className="text-center mt-10">
+        <Button size="lg">
+          <Link to="/services">See All Services</Link>
+        </Button>
       </div>
     </section>
   );

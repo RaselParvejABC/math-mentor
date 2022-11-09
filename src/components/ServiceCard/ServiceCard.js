@@ -8,7 +8,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
-import Rating from "react-rating";
+import StarRatingComponent from "react-star-rating-component";
 import { FaStar } from "react-icons/fa";
 
 const ServiceCard = ({
@@ -50,20 +50,21 @@ const ServiceCard = ({
         <div className="flex flex-row justify-between items-center">
           <Typography variant="small">{price}</Typography>
           <Button size="sm">
-            <Link to={`services/{_id}`}>View Details</Link>
+            <Link to={`services/${_id}`}>View Details</Link>
           </Button>
         </div>
-        {averageRating && (
-          <Rating
-            start={0}
-            end={10}
-            step={1}
-            fractions={10}
-            initialRating={averageRating}
-            fullSymbol={<FaStar />}
-            emptySymbol={<FaStar />}
-          />
-        )}
+        <div className="mt-4">
+          {!averageRating && <Typography>Not Rated Yet</Typography>}
+          {averageRating && (
+            <StarRatingComponent
+              className="text-left text-2xl"
+              name="rating"
+              value={averageRating}
+              editing={false}
+              starCount={10}
+            />
+          )}
+        </div>
       </CardFooter>
     </Card>
   );
