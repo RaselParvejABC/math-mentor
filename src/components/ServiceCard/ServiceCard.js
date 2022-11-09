@@ -73,9 +73,9 @@ const ServiceCard = ({
             {price}
           </Typography>
           {!bigCard && (
-            <Button size="sm">
-              <Link to={`/service/${_id}`}>View Details</Link>
-            </Button>
+            <Link to={`/service/${_id}`}>
+              <Button size="sm">View Details</Button>
+            </Link>
           )}
         </div>
         <div className="mt-4 text-left">
