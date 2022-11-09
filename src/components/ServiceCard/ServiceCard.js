@@ -8,6 +8,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import StarRatingComponent from "react-star-rating-component";
 
 const ServiceCard = ({
@@ -36,6 +37,20 @@ const ServiceCard = ({
   return (
     <Card className="w-96">
       <CardHeader color="white" className="relative h-56">
+        <PhotoProvider
+          speed={() => 800}
+          easing={(type) =>
+            type === 2
+              ? "cubic-bezier(0.36, 0, 0.66, -0.56)"
+              : "cubic-bezier(0.34, 1.56, 0.64, 1)"
+          }
+        >
+          <div className="foo">
+            <PhotoView src={image}>
+              <img src={image} alt="Service" className="h-full w-full" />
+            </PhotoView>
+          </div>
+        </PhotoProvider>
         <img src={image} alt="Service" className="h-full w-full" />
       </CardHeader>
       <CardBody className="text-center h-60">
