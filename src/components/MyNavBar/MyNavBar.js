@@ -58,7 +58,7 @@ export default function MyNavBar() {
       {!loading && error && <span>Reload the Page</span>}
       {!loading && !error && user && (
         <>
-          <MyNavItem to="/services/add">Add a Service</MyNavItem>
+          <MyNavItem to="/service/add">Add a Service</MyNavItem>
           <MyNavItem to="/my-reviews">My Reviews</MyNavItem>
           <Tooltip
             content={user.displayName}

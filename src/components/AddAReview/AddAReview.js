@@ -75,10 +75,12 @@ const AddAReview = () => {
       setReviewText(reviewText.substring(0, 300));
       return;
     }
+
     if (rating < 1) {
       setError("Give a rating please!");
       return;
     }
+
     const formData = new FormData();
     formData.append("reviewText", reviewText);
     formData.append("rating", rating);
@@ -89,8 +91,6 @@ const AddAReview = () => {
 
     submit(formData, { method: "POST" });
   };
-
-  console.log(actionData);
 
   return (
     <>

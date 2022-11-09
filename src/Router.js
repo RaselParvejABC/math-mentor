@@ -9,6 +9,8 @@ import Services, {
 } from "./components/Services/Services";
 import Service, { loader as serviceLoader } from "./components/Service/Service";
 import { reviewAddAction } from "./actions/review-add";
+import AddAService from "./components/AddAService/AddAService";
+import MyReviews from "./components/MyReviews/MyReviews";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
         loader: serviceLoader,
         action: reviewAddAction,
         element: <Service />,
+      },
+      {
+        path: "/service/add",
+        element: <AddAService />,
+      },
+      {
+        path: "/my-reviews",
+        element: <MyReviews />,
       },
       {
         path: "/blog",
