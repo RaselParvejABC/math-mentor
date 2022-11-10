@@ -6,6 +6,8 @@ import ServiceCard from "../ServiceCard/ServiceCard";
 
 const ServicesOnHome = () => {
   const [services, setServices] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   const getDescriptionComponent = (description) => {
     let modifiedDescription = description;
@@ -21,30 +23,56 @@ const ServicesOnHome = () => {
   };
 
   useEffect(() => {
+    setError(null);
+    setLoading(true);
     const fetchData = async () => {
-      const response = await fetch(
-        `${process.env.REACT_APP_MathMentorServer}/services`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            limit: 3,
-          }),
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_MathMentorServer}/services`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              limit: 3,
+            }),
+          }
+        );
+        if (!response.ok) {
+          throw new Error();
         }
-      );
-      const responseBody = await response.json();
-      setServices(responseBody);
+        const responseBody = await response.json();
+        setServices(responseBody);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchData();
   }, []);
 
-  if (!services) {
+  if (error) {
+    return (
+      <Typography variant="h4" color="blue" className="text-center">
+        Please, Reload the Page.
+      </Typography>
+    );
+  }
+  if (loading) {
     return (
       <div className="flex flex-row justify-center mt-6">
         <SpinnerDotted size="70" />
       </div>
+    );
+  }
+
+  if (!services) {
+    return (
+      <Typography variant="h4" color="blue" className="text-center">
+        No Services
+      </Typography>
     );
   }
 

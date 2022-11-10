@@ -24,12 +24,31 @@ export default function MyNavBar() {
   const navigate = useNavigate();
   const { firebaseAuth } = useContext(FirebaseAuthContext);
   const [user, loading, error] = useAuthState(firebaseAuth, {
-    onUserChanged: (user) => {
+    onUserChanged: async (user) => {
       if (!user) {
-        localStorage.removeItem("jwt");
+        console.log("User Out: Nav");
+        const response = await fetch(
+          `${process.env.REACT_APP_MathMentorServer}/user/sign-out`,
+          {
+            method: "DELETE",
+            credentials: "include",
+          }
+        );
+        const responseBody = await response.json();
+        console.log(responseBody);
         return;
       }
-      console.log(user);
+      console.log("User In: Nav");
+      console.log(user.uid);
+      const response = await fetch(
+        `${process.env.REACT_APP_MathMentorServer}/user/token/${user.uid}`,
+        {
+          method: "GET",
+          credentials: "include",
+        }
+      );
+      const responseBody = await response.json();
+      console.log(responseBody);
     },
   });
 
