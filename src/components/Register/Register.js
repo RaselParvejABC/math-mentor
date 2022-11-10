@@ -71,6 +71,11 @@ const Register = () => {
       return;
     }
 
+    if (event.target.propic.files[0] === "") {
+      setError("Add a Profile Picture.");
+      return;
+    }
+
     const formData = new FormData();
     formData.append("key", process.env.REACT_APP_ImgBB_API_KEY);
     formData.append("image", event.target.propic.files[0]);

@@ -13,6 +13,7 @@ import AddAService from "./components/AddAService/AddAService";
 import MyReviews from "./components/MyReviews/MyReviews";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
+import PrivateRouteProtector from "./components/PrivateRouteProtector/PrivateRouteProtector";
 
 const router = createBrowserRouter([
   {
@@ -37,11 +38,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/service/add",
-        element: <AddAService />,
+        element: (
+          <PrivateRouteProtector>
+            <AddAService />
+          </PrivateRouteProtector>
+        ),
       },
       {
         path: "/my-reviews",
-        element: <MyReviews />,
+        element: (
+          <PrivateRouteProtector>
+            <MyReviews />
+          </PrivateRouteProtector>
+        ),
       },
       {
         path: "/blog",
