@@ -7,10 +7,10 @@
 ## Features
 > - Users can see Services provided by Site Owner, a Math Mentor.
 > - Upon Login, a user can—
->  - Review and Rate a Service.
->  - Show his/her Reviews on this site.
->  - Edit and delete his/her reviews.
->  - Add new service. (Doesn't make sense! Still task requirement!)
+>   - Review and Rate a Service.
+>   - Show his/her Reviews on this site.
+>   - Edit and delete his/her reviews.
+>   - Add new service. (Doesn't make sense! Still task requirement!)
 
 ## Techs
 > - Node Express Backend
@@ -27,7 +27,7 @@
 > - react-star-rating-component
 > - spinner-react (Beautiful Spinners!)
 > - react-router-dom 
->  - useLocation() (After login/registration, auto redirect to preceding page!)
->  - action and useActionData (To show confirmation dialog on Data Mutation)
->  - useSubmit (To imperatively submit form; to take advantage of action feature)
->  - loader and useLoaderData
+>   - useLocation() (After login/registration, auto redirect to preceding page!)
+>   - action and useActionData (To show confirmation dialog on Data Mutation)
+>   - useSubmit (To imperatively submit form; to take advantage of action feature)
+>   - loader and useLoaderData
