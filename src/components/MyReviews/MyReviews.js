@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useActionData } from "react-router-dom";
 import { SpinnerDotted } from "spinners-react";
 import MyReviewCard from "../MyReviewCard/MyReviewCard";
+import useDocumentTitle from "../../custom-hooks/useDocumentTitle";
 
 export async function reviewEditDeleteAction({ request }) {
   const requestBody = Object.fromEntries(await request.formData());
@@ -28,6 +29,7 @@ export async function reviewEditDeleteAction({ request }) {
 }
 
 const MyReviews = () => {
+  useDocumentTitle("My Reviews");
   const actionData = useActionData();
   const [reviews, setReviews] = useState();
   const [loading, setLoading] = useState(false);

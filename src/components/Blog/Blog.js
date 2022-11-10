@@ -5,8 +5,10 @@ import {
   AccordionBody,
   Typography,
 } from "@material-tailwind/react";
+import useDocumentTitle from "../../custom-hooks/useDocumentTitle";
 
 const Blog = () => {
+  useDocumentTitle("Blog");
   const [openAccordionIndex, setOpenAccordionIndex] = useState(0);
 
   return (

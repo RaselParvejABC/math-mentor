@@ -2,6 +2,7 @@ import React from "react";
 import { useLoaderData } from "react-router-dom";
 import ServiceReviewSection from "../ServiceReviewSection/ServiceReviewSection";
 import ServiceCard from "../ServiceCard/ServiceCard";
+import useDocumentTitle from "../../custom-hooks/useDocumentTitle";
 
 export async function loader({ params }) {
   const service = await loadService(params.id);
@@ -33,6 +34,7 @@ const loadReviews = async (serviceID) => {
 };
 
 const Service = () => {
+  useDocumentTitle("Service");
   const { service } = useLoaderData();
 
   return (

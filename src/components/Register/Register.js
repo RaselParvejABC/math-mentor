@@ -8,8 +8,10 @@ import {
 } from "react-firebase-hooks/auth";
 import { SpinnerDotted } from "spinners-react";
 import { FirebaseAuthContext } from "../../contexts/FirebaseAuthContextProvider/FirebaseAuthContextProvider";
+import useDocumentTitle from "../../custom-hooks/useDocumentTitle";
 
 const Register = () => {
+  useDocumentTitle("Register");
   const { firebaseAuth } = useContext(FirebaseAuthContext);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

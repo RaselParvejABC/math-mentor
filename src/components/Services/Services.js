@@ -5,6 +5,7 @@ import ServiceCard from "../ServiceCard/ServiceCard";
 import usePagination from "paginact";
 import { useLoaderData } from "react-router-dom";
 import Pagination from "../Pagination/Pagination";
+import useDocumentTitle from "../../custom-hooks/useDocumentTitle";
 
 export async function loader() {
   const response = await fetch(
@@ -18,6 +19,7 @@ export async function loader() {
 }
 
 const Services = () => {
+  useDocumentTitle("Services");
   const totalNumberOfItems = useLoaderData();
   const {
     itemsPerPage,

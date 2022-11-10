@@ -8,8 +8,10 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { SpinnerDotted } from "spinners-react";
+import useDocumentTitle from "../../custom-hooks/useDocumentTitle";
 
 const AddAService = () => {
+  useDocumentTitle("Add a Service");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [uploadingImage, setUploadingImage] = useState(false);

@@ -2,7 +2,7 @@ import { Typography, Textarea, Button } from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
 import { useSubmit, useLoaderData } from "react-router-dom";
 import { SpinnerDotted } from "spinners-react";
-
+import useDocumentTitle from "../../custom-hooks/useDocumentTitle";
 import StarRatingComponent from "react-star-rating-component";
 
 export async function loader({ params }) {
@@ -17,6 +17,7 @@ export async function loader({ params }) {
 }
 
 const EditAReview = () => {
+  useDocumentTitle("Edit Review");
   const submit = useSubmit();
   const review = useLoaderData();
   const [reviewText, setReviewText] = useState("");

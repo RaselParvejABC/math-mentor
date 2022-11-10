@@ -7,10 +7,11 @@ import {
 } from "react-firebase-hooks/auth";
 import * as EmailValidator from "email-validator";
 import { SpinnerDotted } from "spinners-react";
-
+import useDocumentTitle from "../../custom-hooks/useDocumentTitle";
 import { FirebaseAuthContext } from "../../contexts/FirebaseAuthContextProvider/FirebaseAuthContextProvider";
 
 const Login = () => {
+  useDocumentTitle("Log In");
   const { firebaseAuth } = useContext(FirebaseAuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
