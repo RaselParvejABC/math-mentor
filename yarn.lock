@@ -4325,6 +4325,7 @@ __metadata:
     paginact: ^1.0.3
     postcss: ^8.4.18
     react: ^18.2.0
+    react-confirm-alert: ^3.0.6
     react-dom: ^18.2.0
     react-firebase-hooks: ^5.0.3
     react-icons: ^4.6.0
@@ -11009,6 +11010,16 @@ __metadata:
     regenerator-runtime: ^0.13.9
     whatwg-fetch: ^3.6.2
   checksum: 1bb031080af15397d6eb9c69a0c2e93799991f7197a086e4409ba719398f1256b542a3d6c9a34673d516c684eef3e8226c99b335982593851f58f65f6e43571b
+  languageName: node
+  linkType: hard
+
+"react-confirm-alert@npm:^3.0.6":
+  version: 3.0.6
+  resolution: "react-confirm-alert@npm:3.0.6"
+  peerDependencies:
+    react: ">=18.0.0"
+    react-dom: ">=10.0.0"
+  checksum: 9ae9bfff2bf4cc5d64e0fa1a2b6b2c01415871baf646c1b43ffebe01a9c97133ea4fe8a0a962a72db11a4d74d2c22189eef088ed76cd1aefec0fbc87aae5951a
   languageName: node
   linkType: hard
 

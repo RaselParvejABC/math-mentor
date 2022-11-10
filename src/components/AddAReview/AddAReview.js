@@ -86,8 +86,6 @@ const AddAReview = () => {
     formData.append("rating", rating);
     formData.append("userID", currentUser.uid);
     formData.append("serviceID", service._id);
-    formData.append("displayName", currentUser.displayName);
-    formData.append("photoURL", currentUser.photoURL);
 
     submit(formData, { method: "POST" });
   };

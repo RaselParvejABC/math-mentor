@@ -55,7 +55,7 @@ const ServicesOnHome = () => {
 
   if (error) {
     return (
-      <Typography variant="h4" color="blue" className="text-center">
+      <Typography variant="h4" color="red" className="text-center mb-3">
         Please, Reload the Page.
       </Typography>
     );

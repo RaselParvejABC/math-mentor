@@ -8,6 +8,7 @@
     "firebase": "^9.13.0",
     "paginact": "^1.0.3",
     "react": "^18.2.0",
+    "react-confirm-alert": "^3.0.6",
     "react-dom": "^18.2.0",
     "react-firebase-hooks": "^5.0.3",
     "react-icons": "^4.6.0",

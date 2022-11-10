@@ -10,7 +10,9 @@ import Services, {
 import Service, { loader as serviceLoader } from "./components/Service/Service";
 import { reviewAddAction } from "./actions/review-add";
 import AddAService from "./components/AddAService/AddAService";
-import MyReviews from "./components/MyReviews/MyReviews";
+import MyReviews, {
+  reviewEditDeleteAction,
+} from "./components/MyReviews/MyReviews";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import PrivateRouteProtector from "./components/PrivateRouteProtector/PrivateRouteProtector";
@@ -46,6 +48,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/my-reviews",
+        action: reviewEditDeleteAction,
         element: (
           <PrivateRouteProtector>
             <MyReviews />

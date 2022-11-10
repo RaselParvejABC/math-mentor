@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useActionData } from "react-router-dom";
 import {
   Card,
   CardHeader,
@@ -17,6 +18,7 @@ const ServiceCard = ({
   bigCard,
 }) => {
   const [averageRating, setAverageRating] = useState(null);
+  const actionData = useActionData();
 
   useState(() => {
     const fetchAverageRating = async () => {
@@ -33,7 +35,7 @@ const ServiceCard = ({
       setAverageRating(responseBody["average"]);
     };
     fetchAverageRating();
-  }, [_id]);
+  }, [_id, actionData]);
 
   return (
     <Card>
