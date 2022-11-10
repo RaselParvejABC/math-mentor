@@ -19,7 +19,7 @@ const ServiceReviews = () => {
       </Typography>
       {reviews.map((review) => {
         return (
-          <Card cla>
+          <Card key={review._id}>
             <CardHeader>
               <StarRatingComponent
                 className="text-center md:text-left text-2xl"

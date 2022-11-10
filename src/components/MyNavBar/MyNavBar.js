@@ -41,7 +41,9 @@ export default function MyNavBar() {
   }, []);
 
   const loginButtonOnClick = () => {
-    navigate("/login", { state: { from: location } });
+    navigate("/login", {
+      state: { from: location.state?.from || location.pathname || "/" },
+    });
   };
   const loginButton = (
     <Button size="sm" onClick={loginButtonOnClick}>

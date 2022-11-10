@@ -26,10 +26,31 @@ const Login = () => {
     useSignInWithGoogle(firebaseAuth);
 
   const [currentUser, currentUserLoading, currentUserLoadingError] =
-    useAuthState(firebaseAuth);
+    useAuthState(firebaseAuth, {
+      onUserChanged: async (user) => {
+        if (!user) {
+          console.log("User Out: Login Page");
+          await fetch(
+            `${process.env.REACT_APP_MathMentorServer}/user/sign-out`,
+            {
+              method: "DELETE",
+            }
+          );
+          return;
+        }
+        console.log("User In: Login Page");
+        await fetch(
+          `${process.env.REACT_APP_MathMentorServer}/user/token/${user.uid}`,
+          {
+            method: "GET",
+          }
+        );
+      },
+    });
 
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from || "/";
+  console.log("Login from: ", from);
 
   if (currentUserLoading) {
     return (

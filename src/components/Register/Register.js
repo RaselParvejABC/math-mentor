@@ -30,7 +30,8 @@ const Register = () => {
     useAuthState(firebaseAuth);
 
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from || "/";
+  console.log("Register from: ", from);
 
   if (currentUserLoading) {
     return (
@@ -98,8 +99,6 @@ const Register = () => {
     }
 
     setProfileNeedsUpdate(true);
-
-    console.log(photoURL);
 
     createUserWithEmailAndPassword(email, password)
       .then((user) => {
