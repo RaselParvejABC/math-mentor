@@ -28,6 +28,7 @@
 > - react-photo-view
 > - react-star-rating-component
 > - spinner-react (Beautiful Spinners!)
+> - Custom Hook for Dynamic Document Title based on Current Route
 > - react-router-dom 
 >   - useLocation()
 >     - After login/registration, auto redirect to preceding page!
