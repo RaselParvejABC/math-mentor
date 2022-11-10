@@ -7,7 +7,7 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
-import { useSubmit, useActionData } from "react-router-dom";
+import { useSubmit, useActionData, Link } from "react-router-dom";
 import { CiEdit } from "react-icons/ci";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 import StarRatingComponent from "react-star-rating-component";
@@ -18,7 +18,7 @@ const MyReviewCard = ({ review }) => {
   const submit = useSubmit();
   const actionData = useActionData();
 
-  console.log(actionData);
+  
 
   useEffect(() => {
     if (actionData?.deleted) {
@@ -54,7 +54,6 @@ const MyReviewCard = ({ review }) => {
       if (!confirmed) {
         return;
       }
-      console.log("Submitting");
       const formData = new FormData();
       formData.append("reviewID", review._id);
       submit(formData, { method: "DELETE", action: "/my-reviews" });
@@ -98,12 +97,17 @@ const MyReviewCard = ({ review }) => {
           starCount={10}
         />
       </CardBody>
-      <CardFooter divider className="flex items-center justify-between py-3">
-        <Button variant="outlined">
-          <Typography>
-            <CiEdit color="blue" />
-          </Typography>
-        </Button>
+      <CardFooter
+        divider
+        className="flex items-center justify-between py-3 h-fit"
+      >
+        <Link to={`/service/edit/${review._id}`}>
+          <Button variant="outlined">
+            <Typography>
+              <CiEdit color="blue" />
+            </Typography>
+          </Button>
+        </Link>
         <Button variant="outlined" onClick={handleDeleteButtonClick}>
           <Typography>
             <RiDeleteBin5Fill color="red" />

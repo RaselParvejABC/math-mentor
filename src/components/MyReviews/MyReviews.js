@@ -24,7 +24,6 @@ export async function reviewEditDeleteAction({ request }) {
     }
   );
   const responseBody = await response.json();
-  console.log(responseBody);
   return responseBody;
 }
 
@@ -73,7 +72,7 @@ const MyReviews = () => {
 
   if (loading) {
     return (
-      <div className="flex flex-row justify-center mt-6">
+      <div className="flex flex-row justify-center items-start mt-6">
         <SpinnerDotted size="70" />
       </div>
     );
@@ -92,7 +91,7 @@ const MyReviews = () => {
       <Typography variant="h3" color="blue" className="text-center">
         MY Reviews
       </Typography>
-      <div className="grid lg:grid-cols-3 gap-5 gap-y-10 container mx-auto my-12">
+      <div className="grid lg:grid-cols-3 items-start gap-5 gap-y-10 container mx-auto my-12">
         {reviews.map((review) => (
           <MyReviewCard key={review._id} review={review} />
         ))}

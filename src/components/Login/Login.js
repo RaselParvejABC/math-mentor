@@ -30,7 +30,6 @@ const Login = () => {
 
   const location = useLocation();
   const from = location.state?.from || "/";
-  console.log("Login from: ", from);
 
   if (currentUserLoading) {
     return (

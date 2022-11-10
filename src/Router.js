@@ -16,6 +16,9 @@ import MyReviews, {
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import PrivateRouteProtector from "./components/PrivateRouteProtector/PrivateRouteProtector";
+import EditAReview, {
+  loader as editAReviewLoader,
+} from "./components/EditAReview/EditAReview";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +57,11 @@ const router = createBrowserRouter([
             <MyReviews />
           </PrivateRouteProtector>
         ),
+      },
+      {
+        path: "/service/edit/:id",
+        loader: editAReviewLoader,
+        element: <EditAReview />,
       },
       {
         path: "/blog",

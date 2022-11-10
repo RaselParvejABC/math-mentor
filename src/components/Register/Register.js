@@ -31,7 +31,6 @@ const Register = () => {
 
   const location = useLocation();
   const from = location.state?.from || "/";
-  console.log("Register from: ", from);
 
   if (currentUserLoading) {
     return (
